@@ -1,0 +1,33 @@
+roles:
+  memcached:
+    inventories:
+      - static1
+      - static2
+  mysql:
+    inventories:
+      - mysql_nodes
+
+connections:
+  ssh:
+    type: ssh
+    options:
+      private_key: /path/to/id_rsa
+      port: 22
+
+inventories:
+  static1:
+    type: textfile
+    options:
+      file: /my/file.txt
+    connection: ssh
+  static2:
+    type: textfile
+    options:
+      file: /my/other/file.txt
+    connection: ssh
+  mysql_nodes:
+    type: textfile
+    options:
+      file: /my/mysql/nodes.txt
+    connection: ssh
+
